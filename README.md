@@ -15,7 +15,7 @@ This repo uses HashiCorp Vault to manage SSL Certificates
 - deploy ``` terraform init && terraform plan && terraform apply -auto-approve ```
 - This will deploy F5 BIG-IP instance & install Vault agent  on ubuntu on AWS
 - SSH into the ubuntu server ```To_SSH_into_vault_ubuntu = "ssh -i terraform-20220512173100706300000001.pem ubuntu@52.12.17.30"``` **note:** check your ubuntu server address and key from the terraform output
-- Change directory on the ubuntu server to ```cd /tmp``
+- Change directory on the ubuntu server to ```cd /tmp```
 - Configure vault and use vault agent
 ```
 
