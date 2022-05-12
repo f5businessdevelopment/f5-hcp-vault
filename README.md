@@ -49,7 +49,9 @@ vault {
 
 ```
 ### Configure PKI for Intermediate Certificate with roles, TTL etc
+
 ```vault write pki_int/roles/web-certs allowed_domains=demof5.com ttl=160s max_ttl=30m allow_subdomains=true```
+
 ![PKI enabled through CLI](images/pki.png)
 
 ```
