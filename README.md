@@ -90,6 +90,6 @@ the agent file so that, when the Certs get expired ```updt.sh``` script update t
 
 Stop the vault agent and uncomment ``` command = "bash updt.sh" ``` in the file agent-config.hcl 
 
-### Run the start the agent again so it keeps updating the Certs forever when they are about to get expired
+### Run the agent again so it keeps updating the Certs forever when they are about to get expired
 Run ``` vault agent -config=agent-config.hcl -log-level=debug ``` to update the certs automatically
 ```
