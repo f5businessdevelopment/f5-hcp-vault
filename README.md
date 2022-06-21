@@ -2,6 +2,9 @@
 
 This repo uses HashiCorp Vault to manage SSL Certificates
 
+**Note:** Assumption is you have HCP Vault Cluster already deployed. If you are using Vault OSS please refer 
+to https://github.com/f5devcentral/f5-certificate-rotate
+
 # Architecture
 ![Demo Arch](rtaImage.png)
 
