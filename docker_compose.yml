@@ -1,0 +1,25 @@
+version: '3'
+services:
+  resnet1:
+    image: openvino/model_server:latest
+    environment:
+      - MODEL_NAME=resnet
+      - MODEL_PATH=/models/resnet50
+      - LAYOUT=NHWC:NCHW
+      - PORT=9001
+    volumes:
+      - ./models:/models
+    ports:
+      - "9001:9000"
+  resnet2:
+    image: openvino/model_server:latest
+    environment:
+      - MODEL_NAME=resnet
+      - MODEL_PATH=/models/resnet50
+      - LAYOUT=NHWC:NCHW
+      - PORT=9002
+    volumes:
+      - ./models:/models
+    ports:
+      - "9002:9000"
+  # Add more services for additional containers if needed
