@@ -7,16 +7,18 @@ def run(image_path):
     # Create SSL/TLS channel credentials
     credentials = grpc.ssl_channel_credentials()
 
-    # Replace '10.1.1.7:443' with the address of your gRPC server and the SSL port
-    # You may need to replace '443' with the actual SSL port of your server
-    with grpc.secure_channel('10.1.1.7:443', credentials) as channel:
-        client = make_grpc_client('10.1.1.7:443')  # Pass the URL as a string here
+    # Create channel with HTTP/2 support
+    options = [('grpc.default_compression_algorithm', grpc.CompressionAlgorithm.Gzip)]
+    channel = grpc.secure_channel('10.1.1.7:443', credentials, options)
 
-        with open(image_path, "rb") as f:
-            img = f.read()
+    # Create gRPC client
+    client = make_grpc_client(channel)
 
-        # Make a gRPC call
-        output = client.predict({"0": img}, "resnet")
+    with open(image_path, "rb") as f:
+        img = f.read()
+
+    # Make a gRPC call
+    output = client.predict({"0": img}, "resnet")
 
     # Decode and print the result
     result_index = np.argmax(output[0])
