@@ -13,11 +13,11 @@ def run(image_path):
     ]
     channel = grpc.secure_channel('10.1.1.7:443', credentials, options)
 
-    # Create gRPC client
-    client = make_grpc_client(channel)
-
     with open(image_path, "rb") as f:
         img = f.read()
+
+    # Make a gRPC client
+    client = make_grpc_client('10.1.1.7:443')
 
     # Make a gRPC call
     output = client.predict({"0": img}, "resnet")
