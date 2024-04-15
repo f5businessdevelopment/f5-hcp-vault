@@ -2,13 +2,14 @@ import numpy as np
 from classes import imagenet_classes
 import grpc
 from ovmsclient import make_grpc_client
+from grpc import _compression
 
 def run(image_path):
     # Create SSL/TLS channel credentials
     credentials = grpc.ssl_channel_credentials()
 
     # Create channel with HTTP/2 support
-    options = [('grpc.default_compression_algorithm', grpc.CompressionAlgorithm.Gzip)]
+    options = [('grpc.default_compression_algorithm', _compression.CompressionAlgorithm.Gzip)]
     channel = grpc.secure_channel('10.1.1.7:443', credentials, options)
 
     # Create gRPC client
