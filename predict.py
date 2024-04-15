@@ -9,8 +9,7 @@ def run(image_path):
 
     # Create channel with HTTP/2 support and compression
     options = [
-        ('grpc.default_compression_algorithm', grpc.Compression.Gzip),
-        ('grpc.default_compression_level', grpc.Compression.Level.High)
+        ('grpc.default_compression_algorithm', grpc.Compression.Gzip)
     ]
     channel = grpc.secure_channel('10.1.1.7:443', credentials, options)
 
